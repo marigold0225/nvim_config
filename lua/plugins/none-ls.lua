@@ -9,15 +9,22 @@ return {
         -- config variable is the default configuration table for the setup function call
         local null_ls = require "null-ls"
 
-        -- Check supported formatters and linters
-        -- https://github.com/nvimtools/none-ls.nvim/tree/main/lua/null-ls/builtins/formatting
-        -- https://github.com/nvimtools/none-ls.nvim/tree/main/lua/null-ls/builtins/diagnostics
+        local clang_format = null_ls.builtins.formatting.clang_format.with {
+            extra_args = { "-style", "{BasedOnStyle: LLVM, IndentWidth: 4}" },
+        }
+
+        local black = null_ls.builtins.formatting.black.with {
+            filetypes = { "python" },
+            extra_args = { "--line-length", "80" },
+        }
+
         config.sources = {
             -- Set a formatter
             null_ls.builtins.formatting.stylua,
+            clang_format,
+            black,
+
             -- null_ls.builtins.formatting.prettier,
-            -- null_ls.builtins.formatting.latexindent,
-            -- null_ls.builtins.formatting.
         }
         return config -- return final config table
     end,

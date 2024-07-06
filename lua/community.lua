@@ -6,21 +6,37 @@
 
 ---@type LazySpec
 return {
-  "AstroNvim/astrocommunity",
-  { import = "astrocommunity.pack.lua" },
-  -- import/override with your plugins folder
-  { import = "astrocommunity.colorscheme.catppuccin" },
-  { import = "astrocommunity.pack.cpp" },
-  { import = "astrocommunity.snippet.nvim-snippets" },
+    "AstroNvim/astrocommunity",
+    { import = "astrocommunity.pack.lua" },
+    -- import/override with your plugins folder
+    { import = "astrocommunity.colorscheme.catppuccin" },
+    { import = "astrocommunity.colorscheme.tokyonight-nvim" },
 
-  { import = "astrocommunity.indent.indent-blankline-nvim" },
+    { import = "astrocommunity.pack.lua" },
+    { import = "astrocommunity.pack.cpp" },
+    { import = "astrocommunity.pack.cmake" },
+    { import = "astrocommunity.pack.markdown" },
+    { import = "astrocommunity.pack.python" },
+    { import = "astrocommunity.pack.bash" },
+    { import = "astrocommunity.pack.rust" },
+    { import = "astrocommunity.markdown-and-latex.vimtex" },
+    -- { import = "astrocommunity.snippet.nvim-snippets" },
 
-  { import = "astrocommunity.indent.mini-indentscope" },
-  { import = "astrocommunity.utility.noice-nvim" },
+    { import = "astrocommunity.indent.indent-blankline-nvim" },
+    { import = "astrocommunity.indent.mini-indentscope" },
 
-  { import = "astrocommunity.markdown-and-latex.vimtex" },
+    { import = "astrocommunity.utility.noice-nvim" },
 
-  { import = "astrocommunity.completion.cmp-cmdline" },
+    { import = "astrocommunity.completion.cmp-cmdline" },
+    { import = "astrocommunity.completion.cmp-latex-symbols" },
+    { import = "astrocommunity.completion.cmp-emoji" },
+    { import = "astrocommunity.completion.copilot-cmp" },
 
-  { import = "astrocommunity.motion.hop-nvim" },
+    { import = "astrocommunity.motion.flash-nvim" },
+    { import = "astrocommunity.diagnostics.trouble-nvim" },
+
+    { import = "astrocommunity.code-runner.sniprun" },
+    { import = "astrocommunity.bars-and-lines.vim-illuminate" },
+
+    { import = "astrocommunity.bars-and-lines.lualine-nvim" },
 }

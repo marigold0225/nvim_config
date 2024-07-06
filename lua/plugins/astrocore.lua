@@ -31,7 +31,8 @@ return {
                 number = true, -- sets vim.opt.number
                 spell = false, -- sets vim.opt.spell
                 signcolumn = "yes", -- sets vim.opt.signcolumn to yes
-                wrap = false, -- sets vim.opt.wrap
+                wrap = true, -- sets vim.opt.wrap
+                linebreak = true, -- sets vim.opt.linebreak
             },
             g = { -- vim.g.<key>
                 -- configure global vim variables (vim.g)
@@ -66,10 +67,36 @@ return {
 
                 -- setting a mapping to false will disable it
                 -- ["<C-S>"] = false,
+                ["\\"] = false,
+                --
+                ["<A-j>"] = ":m .+1<CR>==",
+                ["<A-k>"] = ":m .-2<CR>==",
+
+                -- split windows
+                ["|"] = ":vsplit<CR>",
+                ["-"] = ":split<CR>",
+
+                -- quick back
+                ["<C-]>"] = "<C-o>",
+                ["<C-[>"] = "<C-i>",
             },
             i = {
+
+                ["<A-j>"] = "<Esc>:m .+1<CR>==gi",
+                ["<A-k>"] = "<Esc>:m .-2<CR>==gi",
+                -- navigation
+                ["<A-Up>"] = "<C-\\><C-N><C-w>k",
+                ["<A-Down>"] = "<C-\\><C-N><C-w>j",
+                ["<A-Left>"] = "<C-\\><C-N><C-w>h",
+                ["<A-Right>"] = "<C-\\><C-N><C-w>l",
+                -- ESC
                 ["jk"] = "<ESC>",
                 ["kj"] = "<ESC>",
+            },
+            v = {
+
+                ["<"] = "<gv",
+                [">"] = ">gv",
             },
         },
     },
