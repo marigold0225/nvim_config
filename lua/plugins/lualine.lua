@@ -564,7 +564,7 @@ M.config = {
 M.setup = function()
     local status_ok, lualine = pcall(require, "lualine")
     if not status_ok then return end
-
+    if M.config.active == false then return end
     styles.update(M)
 
     lualine.setup(M.config)

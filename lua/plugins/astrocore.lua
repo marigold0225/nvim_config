@@ -68,6 +68,7 @@ return {
                 -- setting a mapping to false will disable it
                 -- ["<C-S>"] = false,
                 ["\\"] = false,
+                -- ["<leader>o"] = false,
                 --
                 ["<A-j>"] = ":m .+1<CR>==",
                 ["<A-k>"] = ":m .-2<CR>==",
@@ -79,6 +80,7 @@ return {
                 -- quick back
                 ["<C-]>"] = "<C-o>",
                 ["<C-[>"] = "<C-i>",
+                -- local leader which-key desc
             },
             i = {
 

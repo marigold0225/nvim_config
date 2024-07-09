@@ -8,23 +8,23 @@ return {
     opts = function(_, config)
         -- config variable is the default configuration table for the setup function call
         local null_ls = require "null-ls"
+        local formatting = null_ls.builtins.formatting
 
-        local clang_format = null_ls.builtins.formatting.clang_format.with {
+        local clang_format = formatting.clang_format.with {
             extra_args = { "-style", "{BasedOnStyle: LLVM, IndentWidth: 4}" },
         }
 
-        local black = null_ls.builtins.formatting.black.with {
+        local black = formatting.black.with {
             filetypes = { "python" },
             extra_args = { "--line-length", "80" },
         }
 
         config.sources = {
             -- Set a formatter
-            null_ls.builtins.formatting.stylua,
+            formatting.stylua,
             clang_format,
             black,
-
-            -- null_ls.builtins.formatting.prettier,
+            formatting.prettier,
         }
         return config -- return final config table
     end,

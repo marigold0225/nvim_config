@@ -16,78 +16,7 @@ return {
     -- },
 
     -- == Examples of Overriding Plugins ==
-
     -- customize alpha options
-    {
-        "goolord/alpha-nvim",
-        opts = function(_, opts)
-            -- customize the dashboard header
-            opts.section.header.val = {
-                " █████  ███████ ████████ ██████   ██████",
-                "██   ██ ██         ██    ██   ██ ██    ██",
-                "███████ ███████    ██    ██████  ██    ██",
-                "██   ██      ██    ██    ██   ██ ██    ██",
-                "██   ██ ███████    ██    ██   ██  ██████",
-                " ",
-                "    ███    ██ ██    ██ ██ ███    ███",
-                "    ████   ██ ██    ██ ██ ████  ████",
-                "    ██ ██  ██ ██    ██ ██ ██ ████ ██",
-                "    ██  ██ ██  ██  ██  ██ ██  ██  ██",
-                "    ██   ████   ████   ██ ██      ██",
-            }
-            return opts
-        end,
-    },
-
-    -- You can disable default plugins as follows:
-    { "max397574/better-escape.nvim", enabled = true },
-    {
-        "folke/noice.nvim",
-        event = "VeryLazy",
-        opts = {
-            -- add any options here
-        },
-        dependencies = {
-            "MunifTanjim/nui.nvim",
-
-            "rcarriga/nvim-notify",
-        },
-        config = function()
-            require("noice").setup {
-                lsp = {
-                    -- override markdown rendering so that **cmp** and other cores use **Treesitter**
-                    override = {
-                        ["vim.lsp.util.convert_input_to_markdown_lines"] = true,
-                        ["vim.lsp.util.stylize_markdown"] = true,
-                        ["cmp.entry.get_documentation"] = true, -- requires hrsh7th/nvim-cmp
-                    },
-                    -- signature = {
-                    --     enable = true,
-                    -- },
-                },
-                -- you can enable a preset for easier configuration
-                presets = {
-                    bottom_search = false, -- use a classic bottom cmdline for search
-                    command_palette = true, -- position the cmdline and popupmenu together
-                    long_message_to_split = true, -- long messages will be sent to a split
-                    inc_rename = false, -- enables an input dialog for inc-rename.nvim
-                    lsp_doc_border = true, -- add a border to hover docs and signature help
-                },
-            }
-        end,
-    },
-    {
-        "rcarriga/nvim-notify",
-        opts = {
-
-            stages = "static",
-            render = "compact",
-            max_width = "50",
-            fps = 5,
-            level = 1,
-            timeout = 1000,
-        },
-    },
     {
 
         "vhyrro/luarocks.nvim",
@@ -115,6 +44,72 @@ return {
         },
     },
     {
+        "goolord/alpha-nvim",
+        opts = function(_, opts)
+            -- customize the dashboard header
+            opts.section.header.val = {
+                "██╗   ██╗███████╗ ██████╗ ██████╗ ██████╗ ███████╗",
+                "██║   ██║██╔════╝██╔════╝██╔═══██╗██╔══██╗██╔════╝",
+                "██║   ██║███████╗██║     ██║   ██║██║  ██║█████╗",
+                "╚██╗ ██╔╝╚════██║██║     ██║   ██║██║  ██║██╔══╝",
+                " ╚████╔╝ ███████║╚██████╗╚██████╔╝██████╔╝███████╗",
+                "  ╚═══╝  ╚══════╝ ╚═════╝ ╚═════╝ ╚═════╝ ╚══════╝",
+            }
+            return opts
+        end,
+    },
+
+    -- You can disable default plugins as follows:
+    { "max397574/better-escape.nvim", enabled = true },
+    {
+        "folke/noice.nvim",
+        event = "VeryLazy",
+        opts = {
+            -- add any options here
+        },
+        dependencies = {
+            "MunifTanjim/nui.nvim",
+
+            "rcarriga/nvim-notify",
+        },
+        config = function()
+            require("noice").setup {
+                lsp = {
+                    -- override markdown rendering so that **cmp** and other cores use **Treesitter**
+                    override = {
+                        ["vim.lsp.util.convert_input_to_markdown_lines"] = true,
+                        ["vim.lsp.util.stylize_markdown"] = true,
+                        ["cmp.entry.get_documentation"] = true, -- requires hrsh7th/nvim-cmp
+                    },
+
+                    hover = { enabled = false },
+                    signature = { enabled = false },
+                },
+                -- you can enable a preset for easier configuration
+                presets = {
+                    bottom_search = false, -- use a classic bottom cmdline for search
+                    command_palette = true, -- position the cmdline and popupmenu together
+                    long_message_to_split = true, -- long messages will be sent to a split
+                    inc_rename = false, -- enables an input dialog for inc-rename.nvim
+                    lsp_doc_border = false, -- add a border to hover docs and signature help
+                },
+            }
+        end,
+    },
+    {
+        "rcarriga/nvim-notify",
+        opts = {
+
+            stages = "static",
+            render = "compact",
+            max_width = "50",
+            fps = 5,
+            level = 1,
+            timeout = 1000,
+        },
+    },
+
+    {
 
         "3rd/image.nvim",
         dependencies = { "luarocks.nvim" },
@@ -123,7 +118,7 @@ return {
             -- ...
             require("image").setup {
 
-                backend = "kitty",
+                backend = "ueberzug",
 
                 integrations = {
 
@@ -162,7 +157,7 @@ return {
 
                 max_height_window_percentage = 50,
 
-                window_overlap_clear_enabled = false, -- toggles images when windows are overlapped
+                window_overlap_clear_enabled = true, -- toggles images when windows are overlapped
 
                 window_overlap_clear_ft_ignore = { "cmp_menu", "cmp_docs", "" },
 
@@ -177,12 +172,14 @@ return {
 
     {
 
-        "nvim-neorg/neorg",
-
+        --[[ "nvim-neorg/neorg", ]]
+        "benlubas/neorg",
+        branch = "feat/async_images",
         event = "BufRead",
 
         dependencies = {
             { "luarocks.nvim" },
+            dependencies = { "max397574/neorg-contexts" },
             {
                 "nvim-treesitter/nvim-treesitter",
             },
@@ -195,9 +192,10 @@ return {
                 load = {
 
                     ["core.defaults"] = {}, -- loads default behaviour
-                    -- ["core.autocommands"] = {},
-                    -- ["core.integrations.treesitter"]={},
+                    ["core.autocommands"] = {},
+                    ["core.integrations.treesitter"] = {},
                     ["core.concealer"] = {}, -- adds pretty icons to your documents
+                    ["core.ui.calendar"] = {}, -- adds "]
                     ["core.neorgcmd"] = {},
                     ["core.completion"] = {
                         config = {
@@ -258,5 +256,41 @@ return {
         opts = {
             open_for_directories = false,
         },
+    },
+    {
+        "xiyaowong/transparent.nvim",
+        config = function()
+            require("transparent").setup { -- Optional, you don't have to run setup.
+                groups = { -- table: default groups
+                    "Normal",
+                    "NormalNC",
+                    "Comment",
+                    "Constant",
+                    "Special",
+                    "Identifier",
+                    "Statement",
+                    "PreProc",
+                    "Type",
+                    "Underlined",
+                    "Todo",
+                    "String",
+                    "Function",
+                    "Conditional",
+                    "Repeat",
+                    "Operator",
+                    "Structure",
+                    "LineNr",
+                    "NonText",
+                    "SignColumn",
+                    "CursorLine",
+                    "CursorLineNr",
+                    "StatusLine",
+                    "StatusLineNC",
+                    "EndOfBuffer",
+                },
+                extra_groups = {}, -- table: additional groups that should be cleared
+                exclude_groups = {}, -- table: groups you don't want to clear
+            }
+        end,
     },
 }
