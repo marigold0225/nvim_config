@@ -9,11 +9,11 @@ return {
     -- == Examples of Adding Plugins ==
 
     -- "andweeb/presence.nvim",
-    -- {
-    --     "ray-x/lsp_signature.nvim",
-    --     event = "BufRead",
-    --     config = function() require("lsp_signature").setup() end,
-    -- },
+    {
+        "ray-x/lsp_signature.nvim",
+        event = "BufRead",
+        config = function() require("lsp_signature").setup() end,
+    },
 
     -- == Examples of Overriding Plugins ==
     -- customize alpha options
@@ -118,7 +118,7 @@ return {
             -- ...
             require("image").setup {
 
-                backend = "ueberzug",
+                backend = "kitty",
 
                 integrations = {
 
@@ -258,6 +258,16 @@ return {
         },
     },
     {
+        "kylechui/nvim-surround",
+        version = "*", -- Use for stability; omit to use `main` branch for the latest features
+        event = "VeryLazy",
+        config = function()
+            require("nvim-surround").setup {
+                -- Configuration here, or leave empty to use defaults
+            }
+        end,
+    },
+    {
         "xiyaowong/transparent.nvim",
         config = function()
             require("transparent").setup { -- Optional, you don't have to run setup.
@@ -290,6 +300,62 @@ return {
                 },
                 extra_groups = {}, -- table: additional groups that should be cleared
                 exclude_groups = {}, -- table: groups you don't want to clear
+            }
+        end,
+    },
+    {
+        "nvim-treesitter/nvim-treesitter-textobjects",
+        -- after = "nvim-treesitter",
+        dependencies = "nvim-treesitter/nvim-treesitter",
+        config = function()
+            require("nvim-treesitter.configs").setup {
+                textobjects = {
+                    select = {
+                        enable = true,
+                        lookahead = true,
+                        keymaps = {
+                            ["af"] = "@function.outer",
+                            ["if"] = "@function.inner",
+                            ["ac"] = "@class.outer",
+                            ["ic"] = "@class.inner",
+                            ["al"] = "@loop.outer",
+                            ["il"] = "@loop.inner",
+                            ["ab"] = "@block.outer",
+                            ["ib"] = "@block.inner",
+                            -- ["aa"] = "@parameter.outer",
+                            -- ["ia"] = "@parameter.inner",
+                        },
+                    },
+                    swap = {
+                        enable = true,
+                        swap_next = {
+                            ["<leader>a"] = "@parameter.inner",
+                        },
+                        swap_previous = {
+                            ["<leader>A"] = "@parameter.inner",
+                        },
+                    },
+                    move = {
+                        enable = true,
+                        set_jumps = true,
+                        goto_next_start = {
+                            ["]m"] = "@function.outer",
+                            ["]]"] = "@class.outer",
+                        },
+                        goto_next_end = {
+                            ["]M"] = "@function.outer",
+                            ["]["] = "@class.outer",
+                        },
+                        goto_previous_start = {
+                            ["[m"] = "@function.outer",
+                            ["[["] = "@class.outer",
+                        },
+                        goto_previous_end = {
+                            ["[M"] = "@function.outer",
+                            ["[]"] = "@class.outer",
+                        },
+                    },
+                },
             }
         end,
     },

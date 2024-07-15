@@ -13,19 +13,20 @@ return {
         -- Configuration table of features provided by AstroLSP
         features = {
             codelens = true, -- enable/disable codelens refresh on start
-            inlay_hints = false, -- enable/disable inlay hints on start
+            inlay_hints = true, -- enable/disable inlay hints on start
             semantic_tokens = true, -- enable/disable semantic token highlighting
         },
+
         -- customize lsp formatting options
         formatting = {
             -- control auto formatting on save
             format_on_save = {
-                enabled = true, -- enable or disable format on save globally
+                enabled = false, -- enable or disable format on save globally
                 allow_filetypes = { -- enable format on save for specified filetypes only
                     -- "go",
-                    "lua",
-                    "python",
-                    "cpp",
+                    -- "lua",
+                    -- "python",
+                    -- "cpp",
                 },
                 ignore_filetypes = { -- disable format on save for specified filetypes
                     -- "python",
@@ -77,6 +78,25 @@ return {
                     callback = function(args)
                         if require("astrolsp").config.features.codelens then
                             vim.lsp.codelens.refresh { bufnr = args.buf }
+                        end
+                    end,
+                },
+            },
+            no_insert_inlay_hints = {
+                cond = vim.lsp.inlay_hint and "textDocument/inlayHints" or false,
+                {
+                    event = "InsertEnter",
+                    desc = "Disable inlay hints on insert mode",
+                    callback = function(args)
+                        local filter = { bufnr = args.buf }
+
+                        if vim.lsp.inlay_hint.is_enabled(filter) then
+                            vim.lsp.inlay_hint.enable(false, filter)
+                            vim.api.nvim_create_autocmd("InsertLeave", {
+                                buffer = args.buf,
+                                once = true,
+                                callback = function() vim.lsp.inlay_hint.enable(true, filter) end,
+                            })
                         end
                     end,
                 },

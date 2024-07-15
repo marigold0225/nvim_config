@@ -168,6 +168,7 @@ local icons = {
         CircuitBoard = "",
     },
 }
+
 local window_width_limit = 100
 
 local conditions = {
