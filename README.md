@@ -24,7 +24,7 @@ You can also just clone this repository directly if you do not want to track you
 #### Clone the repository
 
 ```shell
-git clone https://github.com/<your_user>/<your_repository> ~/.config/nvim
+git clone https://github.com/marigold0225/nvim_config ~/.config/nvim
 ```
 
 #### Start Neovim
@@ -32,4 +32,4 @@ git clone https://github.com/<your_user>/<your_repository> ~/.config/nvim
 ```shell
 nvim
 ```
-![norg.jpeg](norg.jpeg)
+![Snipaste.png](shotcut)
