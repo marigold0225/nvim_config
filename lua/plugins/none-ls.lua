@@ -21,7 +21,7 @@ return {
         --set a formatter
         local clang_format = formatting.clang_format.with {
             filetypes = { "c", "cpp", "cs", "java", "cuda", "proto" },
-            extra_args = { "--style=", "{BasedOnStyle: LLVM, IndentWidth: 4}" },
+            extra_args = { "-style=file:" .. vim.fn.expand "~/.config/nvim/.clang-format" },
         }
         local cmake_format = formatting.cmake_format.with {
             filetypes = { "cmake" },
