@@ -32,4 +32,4 @@ git clone https://github.com/marigold0225/nvim_config ~/.config/nvim
 ```shell
 nvim
 ```
-![Snipaste.png](shotcut)
+![shotcut](Snipaste.png)
