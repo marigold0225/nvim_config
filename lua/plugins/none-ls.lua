@@ -21,7 +21,7 @@ return {
         --set a formatter
         local clang_format = formatting.clang_format.with {
             filetypes = { "c", "cpp", "cs", "java", "cuda", "proto" },
-            extra_args = { "--style=", "{BasedOnStyle: LLVM, IndentWidth: 4}" },
+            extra_args = { "-style=file:" .. vim.fn.expand "~\\.clang-format" },
         }
         local cmake_format = formatting.cmake_format.with {
             filetypes = { "cmake" },
@@ -41,7 +41,10 @@ return {
             clang_format,
             formatting.stylua,
             black,
-            formatting.prettier,
+            formatting.prettier.with {
+                filetypes = { "json", "yaml", "html", "markdown" },
+                extra_filetypes = { "toml" },
+            },
             cmake_format,
             findent,
             codespell,

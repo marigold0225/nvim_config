@@ -9,7 +9,7 @@ return {
     builder = function(params)
         return {
             name = vim.fn.expand "%:t",
-            cmd = vim.bo.filetype == "sh" and "sh" or "python3",
+            cmd = vim.bo.filetype == "sh" and "sh" or "python",
             cwd = vim.fn.expand "%:p:h",
             args = vim.list_extend({ vim.fn.expand "%:p" }, params.args),
             components = {

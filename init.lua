@@ -6,7 +6,27 @@ if not (vim.env.LAZY or (vim.uv or vim.loop).fs_stat(lazypath)) then
   vim.fn.system({ "git", "clone", "--filter=blob:none", "https://github.com/folke/lazy.nvim.git", "--branch=stable", lazypath })
 end
 vim.opt.rtp:prepend(lazypath)
--- 自动切换输入法为英文
+
+if vim.g.neovide then
+    -- Put anything you want to happen only in Neovide here
+    vim.o.guifont = "JetBrainsMono Nerd Font:h16" -- text below applies for VimScript
+    vim.g.neovide_transparency = 0.9
+    vim.g.neovide_cursor_vfx_mode = "railgun"
+    vim.g.neovide_profiler = false
+
+    vim.g.neovide_padding_top = 0
+    vim.g.neovide_padding_bottom = 0
+    vim.g.neovide_padding_right = 0
+    vim.g.neovide_padding_left = 0
+
+    vim.g.neovide_text_gamma = 0.0
+    vim.g.neovide_text_contrast = 0.5
+
+    vim.g.neovide_scale_factor = 1.0
+
+    vim.opt.linespace = 0
+end
+-- change the input mode to English auto
 vim.cmd [[
   augroup imselect
     autocmd!

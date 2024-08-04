@@ -33,6 +33,12 @@ return {
                 signcolumn = "yes", -- sets vim.opt.signcolumn to yes
                 wrap = true, -- sets vim.opt.wrap
                 linebreak = true, -- sets vim.opt.linebreak
+                --set shell pwsh
+                shell = "pwsh",
+                shellcmdflag = "-NoLogo -NoProfile -Command",
+                shellquote = "\"",
+                shellxquote = "",
+                scrolloff = 0,
             },
             g = { -- vim.g.<key>
                 -- configure global vim variables (vim.g)

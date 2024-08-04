@@ -1,7 +1,7 @@
 return {
     name = "run python script",
     params = {
-        cmd = { optional = true, type = "string", default = "python3" },
+        cmd = { optional = true, type = "string", default = "python" },
         cwd = { optional = true, type = "string" },
     },
     builder = function(params)

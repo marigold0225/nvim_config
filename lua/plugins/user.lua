@@ -109,73 +109,72 @@ return {
         },
     },
 
+    -- {
+
+    --     "3rd/image.nvim",
+    --     dependencies = { "luarocks.nvim" },
+    --     -- config = true,
+    --     config = function()
+    --         -- ...
+    --         require("image").setup {
+
+    --             backend = "kitty",
+
+    --             integrations = {
+
+    --                 markdown = {
+
+    --                     enabled = true,
+
+    --                     clear_in_insert_mode = false,
+
+    --                     download_remote_images = true,
+
+    --                     only_render_image_at_cursor = false,
+
+    --                     filetypes = { "markdown", "vimwiki" }, -- markdown extensions (ie. quarto) can go here
+    --                 },
+
+    --                 neorg = {
+
+    --                     enabled = true,
+
+    --                     clear_in_insert_mode = false,
+
+    --                     download_remote_images = true,
+
+    --                     only_render_image_at_cursor = false,
+
+    --                     filetypes = { "norg" },
+    --                 },
+    --             },
+
+    --             max_width = nil,
+
+    --             max_height = nil,
+
+    --             max_width_window_percentage = nil,
+
+    --             max_height_window_percentage = 50,
+
+    --             window_overlap_clear_enabled = true, -- toggles images when windows are overlapped
+
+    --             window_overlap_clear_ft_ignore = { "cmp_menu", "cmp_docs", "" },
+
+    --             editor_only_render_when_focused = false, -- auto show/hide images when the editor gains/looses focus
+
+    --             tmux_show_only_in_active_window = false, -- auto show/hide images in the correct Tmux window (needs visual-activity off)
+
+    --             hijack_file_patterns = { "*.png", "*.jpg", "*.jpeg", "*.gif", "*.webp" }, -- render image files as images when opened
+    --         }
+    --     end,
+    -- },
+
     {
-
-        "3rd/image.nvim",
-        dependencies = { "luarocks.nvim" },
-        -- config = true,
-        config = function()
-            -- ...
-            require("image").setup {
-
-                backend = "kitty",
-
-                integrations = {
-
-                    markdown = {
-
-                        enabled = true,
-
-                        clear_in_insert_mode = false,
-
-                        download_remote_images = true,
-
-                        only_render_image_at_cursor = false,
-
-                        filetypes = { "markdown", "vimwiki" }, -- markdown extensions (ie. quarto) can go here
-                    },
-
-                    neorg = {
-
-                        enabled = true,
-
-                        clear_in_insert_mode = false,
-
-                        download_remote_images = true,
-
-                        only_render_image_at_cursor = false,
-
-                        filetypes = { "norg" },
-                    },
-                },
-
-                max_width = nil,
-
-                max_height = nil,
-
-                max_width_window_percentage = nil,
-
-                max_height_window_percentage = 50,
-
-                window_overlap_clear_enabled = true, -- toggles images when windows are overlapped
-
-                window_overlap_clear_ft_ignore = { "cmp_menu", "cmp_docs", "" },
-
-                editor_only_render_when_focused = false, -- auto show/hide images when the editor gains/looses focus
-
-                tmux_show_only_in_active_window = false, -- auto show/hide images in the correct Tmux window (needs visual-activity off)
-
-                hijack_file_patterns = { "*.png", "*.jpg", "*.jpeg", "*.gif", "*.webp" }, -- render image files as images when opened
-            }
-        end,
-    },
-
-    {
-
-        --[[ "nvim-neorg/neorg", ]]
-        "benlubas/neorg",
-        branch = "feat/async_images",
-        event = "BufRead",
+        "nvim-neorg/neorg",
+        -- "benlubas/neorg",
+        -- branch = "feat/async_images",
+        event = "VeryLazy",
 
         dependencies = {
             { "luarocks.nvim" },
@@ -193,6 +192,7 @@ return {
 
                     ["core.defaults"] = {}, -- loads default behaviour
                     ["core.autocommands"] = {},
+                    ["core.keybinds"] = {},
                     ["core.integrations.treesitter"] = {},
                     ["core.concealer"] = {}, -- adds pretty icons to your documents
                     ["core.ui.calendar"] = {}, -- adds "]
@@ -202,19 +202,20 @@ return {
                             engine = "nvim-cmp",
                         },
                     },
+                    ["core.journal"] = {},
                     ["core.highlights"] = {},
-                    ["core.integrations.image"] = {},
+                    -- ["core.integrations.image"] = {},
 
-                    ["core.latex.renderer"] = {
-                        config = {
-                            conceal = true,
-                            min_length = 3,
-                            dpi = 300,
-                            render_on_enter = true,
-                            renderer = "core.integrations.image",
-                            scale = 1,
-                        },
-                    },
+                    -- ["core.latex.renderer"] = {
+                    --     config = {
+                    --         conceal = true,
+                    --         min_length = 3,
+                    --         dpi = 300,
+                    --         render_on_enter = true,
+                    --         renderer = "core.integrations.image",
+                    --         scale = 1,
+                    --     },
+                    -- },
 
                     ["core.dirman"] = { -- manages neorg workspaces
 

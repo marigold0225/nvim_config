@@ -22,7 +22,7 @@ return {
     { import = "astrocommunity.pack.bash" },
     { import = "astrocommunity.pack.rust" },
 
-    { import = "astrocommunity.lsp.lsp-inlayhints-nvim" },
+    -- { import = "astrocommunity.lsp.lsp-inlayhints-nvim" },
     -- { import = "astrocommunity.markdown-and-latex.vimtex" },
     -- { import = "astrocommunity.snippet.nvim-snippets" },
 
