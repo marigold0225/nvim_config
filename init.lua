@@ -11,7 +11,7 @@ vim.opt.rtp:prepend(lazypath)
 if vim.g.neovide then
     -- Put anything you want to happen only in Neovide here
     vim.o.guifont = "JetBrainsMono Nerd Font:h16" -- text below applies for VimScript
-    vim.g.neovide_transparency = 0.75
+    vim.g.neovide_transparency = 0.90
     vim.g.neovide_cursor_vfx_mode = "railgun"
     vim.g.neovide_profiler = false
 

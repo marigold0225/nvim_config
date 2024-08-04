@@ -172,8 +172,8 @@ return {
 
     {
 
-        --[[ "nvim-neorg/neorg", ]]
-        "benlubas/neorg",
+         "nvim-neorg/neorg", 
+        -- "benlubas/neorg",
         -- branch = "feat/async_images",
         event = "VeryLazy",
 
